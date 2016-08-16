@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h1>Customer Support Center</h1>
+            <autocomplete-bar (clicked)="toggleCompanySnippet($event)"></autocomplete-bar>
+        </div>
+    </div>
+</div>
+<div class="company-stats" *ngIf="showCompanyStats && hoveredCompany">
+    <company-stats [company]="hoveredCompany"></company-stats>
+</div>
+<footer class="footer">
+    <chart style="width:100%;" [options]="options" (load)="saveInstance($event.context)"></chart>
+</footer>
