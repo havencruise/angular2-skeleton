@@ -32,5 +32,5 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
   `
 })
 export class Nav {
-    title = 'Customer Support Center';
+    title = 'Angular2App';
 }
