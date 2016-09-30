@@ -47,3 +47,5 @@ Highcharts.setOptions({
     credits: { enabled: false },
     title : { text : '' },
 });
+
+export const mapValuesToArray = (obj: any) => Object.keys(obj).map(key => obj[key]);
