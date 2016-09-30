@@ -8,9 +8,9 @@ export class ApiService {
     headers: Headers = new Headers({
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: 'Basic ABasicAuthTokenHere'
+        Authorization: 'Basic MmEyODE2NTQxYmMyOWIxYjU2ODI3OTEwYmJiMzVlMWU6NDZmYjFhN2VlNjAxYzliOTU5YmY4Y2JkYTllMjMxZDI='
     });
-    api_url: string = 'http://example.com/search';
+    api_url: string = 'http://localhost/_search';
 
     constructor(private http: Http) {}
 
@@ -37,7 +37,4 @@ export class ApiService {
             .catch(err => Observable.throw(err))
             .map(this.getJson)
     }
-
-    // post() - Not implemented
-    // delete() - Not implemented
 }

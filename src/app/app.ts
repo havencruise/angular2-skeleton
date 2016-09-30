@@ -1,19 +1,39 @@
-import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-import { Nav } from './ui';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { Component, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { CoreModule } from './core';
+import { ExampleModule } from './example';
+import { routing } from './routes';
+import { Store } from './store';
 
+// The app component
 @Component({
     selector: 'app',
-    directives: [ Nav, ROUTER_DIRECTIVES ],
     styles: [
         require('style!../../node_modules/bootstrap/dist/css/bootstrap.min.css').toString(),
-        require('style!../static/css/main.css').toString()
+        require('style!../static/css/main.css').toString(),
     ],
-    template: `
-        <nav-bar></nav-bar>
-        <div class="container-fluid" id="main-body">
-            <router-outlet> </router-outlet>
-        </div>
-    `
+    template: `<router-outlet></router-outlet>`
 })
-export class App {}
+export class AppComponent {}
+
+// The app module
+@NgModule({
+    imports:      [
+        BrowserModule, HttpModule, FormsModule,
+        ExampleModule,
+        CoreModule.forRoot(),
+        routing
+    ],
+    declarations: [ AppComponent ],
+    providers:    [
+        { provide: LocationStrategy, useClass: HashLocationStrategy },
+        Store,
+        // { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
+        // { provide: SEED_DATA, useClass: InMemoryDataService }      // in-mem server data
+    ],
+    bootstrap:    [ AppComponent ]
+})
+export class AppModule {}

@@ -1,12 +1,8 @@
-import { provideRouter, RouterConfig }  from '@angular/router';
-import { Dashboard } from './containers';
+import { ModuleWithProviders } from '@angular/core';
+import { RouterModule, Routes }  from '@angular/router';
 
-const routes: RouterConfig = [
-    { path: '', pathMatch: 'full', component: Dashboard },
-    { path: 'dashboard', component: Dashboard },
-    { path: '**', redirectTo: '/dashboard' }
+const routes: Routes = [
+    { path: '', redirectTo: 'example', pathMatch: 'full' }
 ];
 
-export const APP_ROUTER_PROVIDERS = [
-    provideRouter(routes)
-];
+export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

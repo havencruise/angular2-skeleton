@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'nav-bar',
-  directives: [
-    ...ROUTER_DIRECTIVES
-  ],
+  styles: [`
+    .navbar-default { background-color: #f3f3f3; box-shadow: 2px 3px 3px #ccc; }
+    .navbar-header {padding-right:15px;}
+  `],
   template: `
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed"
@@ -18,13 +18,13 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">{{title}}</a>
+                <a [routerLink]="['/']">
+                  <img src="/static/img/logo.png" height=50 alt="{{title}}" />
+                </a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li [routerLinkActive]="['active']">
-                        <a [routerLink]="['/dashboard']">Dashboard</a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -32,5 +32,5 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
   `
 })
 export class Nav {
-    title = 'Angular2App';
+    @Input() title = "Angular2App";
 }
